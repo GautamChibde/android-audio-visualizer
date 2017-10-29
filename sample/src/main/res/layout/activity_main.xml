@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.chibde.audiovisulaizer.VisualizerView
+    <com.chibde.audiovisulaizer.BarVisualizer
         android:id="@+id/visualizer"
         android:layout_width="match_parent"
         android:layout_height="250dp"/>

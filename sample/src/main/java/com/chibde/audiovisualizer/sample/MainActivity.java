@@ -3,18 +3,16 @@ package com.chibde.audiovisualizer.sample;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
-import android.media.audiofx.Visualizer;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.chibde.audiovisulaizer.VisualizerView;
+import com.chibde.audiovisulaizer.BarVisualizer;
+import com.chibde.audiovisulaizer.LineVisualizer;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private MediaPlayer mediaPlayer;
     private ImageButton btnPlayPause;
-    private VisualizerView visualizerView;
+    private BarVisualizer lineVisualizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         btnPlayPause = (ImageButton) findViewById(R.id.ib_play_pause);
-        visualizerView = (VisualizerView) findViewById(R.id.visualizer);
+        lineVisualizer = (BarVisualizer) findViewById(R.id.visualizer);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             int hasAudioPermission = checkSelfPermission(Manifest.permission.RECORD_AUDIO);
             int hasInternetPermission = checkSelfPermission(Manifest.permission.INTERNET);
@@ -47,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             mediaPlayer = MediaPlayer.create(this, R.raw.sample_jingle_bell);
             mediaPlayer.setLooping(false);
-            visualizerView.setPlayer(mediaPlayer);
+            mediaPlayer.start();
+            lineVisualizer.setPlayer(mediaPlayer);
         }
         btnPlayPause.setOnClickListener(this);
     }
@@ -77,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 102:
                 mediaPlayer = MediaPlayer.create(this, R.raw.sample_jingle_bell);
                 mediaPlayer.setLooping(false);
-                visualizerView.setPlayer(mediaPlayer);
+                mediaPlayer.start();
+                lineVisualizer.setPlayer(mediaPlayer);
         }
     }
 }
