@@ -10,8 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.chibde.audiovisulaizer.BarVisualizer;
-import com.chibde.audiovisulaizer.LineVisualizer;
+import com.chibde.audiovisulaizer.visualizer.BlazingColorVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private MediaPlayer mediaPlayer;
     private ImageButton btnPlayPause;
-    private BarVisualizer lineVisualizer;
+    private BlazingColorVisualizer lineVisualizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         btnPlayPause = (ImageButton) findViewById(R.id.ib_play_pause);
-        lineVisualizer = (BarVisualizer) findViewById(R.id.visualizer);
+        lineVisualizer = (BlazingColorVisualizer) findViewById(R.id.visualizer);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             int hasAudioPermission = checkSelfPermission(Manifest.permission.RECORD_AUDIO);
             int hasInternetPermission = checkSelfPermission(Manifest.permission.INTERNET);

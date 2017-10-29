@@ -15,7 +15,7 @@ import android.view.View;
  * Created by gautam on 28/10/17.
  */
 
-public class BaseVisualizer extends View {
+abstract public class BaseVisualizer extends View {
     protected byte[] bytes;
     protected Paint paint;
     protected Visualizer visualizer;
@@ -23,22 +23,26 @@ public class BaseVisualizer extends View {
     public BaseVisualizer(Context context) {
         super(context);
         init(null);
+        init();
     }
 
     public BaseVisualizer(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
+        init();
     }
 
     public BaseVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
+        init();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public BaseVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
+        init();
     }
 
     private void init(AttributeSet attributeSet) {
@@ -71,4 +75,6 @@ public class BaseVisualizer extends View {
     public Visualizer getVisualizer() {
         return visualizer;
     }
+
+    protected abstract void init();
 }

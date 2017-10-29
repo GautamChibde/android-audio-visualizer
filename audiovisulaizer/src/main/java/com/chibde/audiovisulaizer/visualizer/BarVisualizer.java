@@ -1,4 +1,4 @@
-package com.chibde.audiovisulaizer;
+package com.chibde.audiovisulaizer.visualizer;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,6 +7,8 @@ import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
+
+import com.chibde.audiovisulaizer.BaseVisualizer;
 
 /**
  * Created by gautam on 28/10/17.
@@ -31,6 +33,11 @@ public class BarVisualizer extends BaseVisualizer {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public BarVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    @Override
+    protected void init() {
+
     }
 
     public void setDensity(int density) {
