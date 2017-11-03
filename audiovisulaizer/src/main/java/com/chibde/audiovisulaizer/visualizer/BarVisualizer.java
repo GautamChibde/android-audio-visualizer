@@ -22,16 +22,22 @@ public class BarVisualizer extends BaseVisualizer {
         super(context);
     }
 
-    public BarVisualizer(Context context, @Nullable AttributeSet attrs) {
+    public BarVisualizer(Context context,
+                         @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public BarVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public BarVisualizer(Context context,
+                         @Nullable AttributeSet attrs,
+                         int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BarVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public BarVisualizer(Context context,
+                         @Nullable AttributeSet attrs,
+                         int defStyleAttr,
+                         int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -52,7 +58,8 @@ public class BarVisualizer extends BaseVisualizer {
             paint.setStrokeWidth(barWidth - 4);
 
             for (int i = 0; i < bytes.length; i += barWidth) {
-                int top = canvas.getHeight() + ((byte) (Math.abs(bytes[i]) + 128)) * canvas.getHeight() / 128;
+                int top = canvas.getHeight() +
+                        ((byte) (Math.abs(bytes[i]) + 128)) * canvas.getHeight() / 128;
                 canvas.drawLine(i, getHeight(), i, top, paint);
             }
             super.onDraw(canvas);

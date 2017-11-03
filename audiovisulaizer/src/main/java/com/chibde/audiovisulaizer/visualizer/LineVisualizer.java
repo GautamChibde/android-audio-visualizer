@@ -22,16 +22,22 @@ public class LineVisualizer extends BaseVisualizer {
         super(context);
     }
 
-    public LineVisualizer(Context context, @Nullable AttributeSet attrs) {
+    public LineVisualizer(Context context,
+                          @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public LineVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public LineVisualizer(Context context,
+                          @Nullable AttributeSet attrs,
+                          int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public LineVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LineVisualizer(Context context,
+                          @Nullable AttributeSet attrs,
+                          int defStyleAttr,
+                          int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -50,9 +56,11 @@ public class LineVisualizer extends BaseVisualizer {
 
             for (int i = 0; i < bytes.length - 1; i++) {
                 points[i * 4] = rect.width() * i / (bytes.length - 1);
-                points[i * 4 + 1] = rect.height() / 2 + ((byte) (bytes[i] + 128)) * (rect.height() / 3) / 128;
+                points[i * 4 + 1] = rect.height() / 2
+                        + ((byte) (bytes[i] + 128)) * (rect.height() / 3) / 128;
                 points[i * 4 + 2] = rect.width() * (i + 1) / (bytes.length - 1);
-                points[i * 4 + 3] = rect.height() / 2 + ((byte) (bytes[i + 1] + 128)) * (rect.height() / 3) / 128;
+                points[i * 4 + 3] = rect.height() / 2
+                        + ((byte) (bytes[i + 1] + 128)) * (rect.height() / 3) / 128;
             }
             canvas.drawLines(points, paint);
         }

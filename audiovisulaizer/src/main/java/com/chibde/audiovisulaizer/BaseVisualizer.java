@@ -39,7 +39,8 @@ abstract public class BaseVisualizer extends View {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BaseVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public BaseVisualizer(Context context,
+                          @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
         init();

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -24,13 +23,15 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_replay_red_48dp"/>
+            android:src="@drawable/ic_replay_red_48dp"
+            android:contentDescription="@string/image_replay_button"/>
 
         <ImageButton
             android:id="@+id/ib_play_pause"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_play_red_48dp"/>
+            android:src="@drawable/ic_play_red_48dp"
+            android:contentDescription="@string/image_play_pause"/>
     </LinearLayout>
 </RelativeLayout>

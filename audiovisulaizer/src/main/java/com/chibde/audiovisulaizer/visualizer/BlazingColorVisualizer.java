@@ -23,22 +23,34 @@ public class BlazingColorVisualizer extends BaseVisualizer {
         super(context);
     }
 
-    public BlazingColorVisualizer(Context context, @Nullable AttributeSet attrs) {
+    public BlazingColorVisualizer(Context context,
+                                  @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public BlazingColorVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public BlazingColorVisualizer(Context context,
+                                  @Nullable AttributeSet attrs,
+                                  int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BlazingColorVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public BlazingColorVisualizer(Context context,
+                                  @Nullable AttributeSet attrs,
+                                  int defStyleAttr,
+                                  int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
     protected void init() {
-        shader = new LinearGradient(0, 0, 0, getHeight(), Color.BLUE, Color.GREEN, Shader.TileMode.MIRROR /*or REPEAT*/);
+        shader = new LinearGradient(0,
+                0,
+                0,
+                getHeight(),
+                Color.BLUE,
+                Color.GREEN,
+                Shader.TileMode.MIRROR /*or REPEAT*/);
     }
 
     @Override
@@ -46,7 +58,8 @@ public class BlazingColorVisualizer extends BaseVisualizer {
         if (bytes != null) {
             paint.setShader(shader);
             for (int i = 0; i < bytes.length - 1; i++) {
-                int top = canvas.getHeight() + ((byte) (Math.abs(bytes[i]) + 128)) * canvas.getHeight() / 128;
+                int top = canvas.getHeight() +
+                        ((byte) (Math.abs(bytes[i]) + 128)) * canvas.getHeight() / 128;
                 canvas.drawLine(i, getHeight(), i, top, paint);
             }
             super.onDraw(canvas);
