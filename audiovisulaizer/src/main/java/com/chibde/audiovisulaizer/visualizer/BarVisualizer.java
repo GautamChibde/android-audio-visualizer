@@ -72,13 +72,12 @@ public class BarVisualizer extends BaseVisualizer {
             int barWidth = getWidth() / density;
             int div = (int) Math.ceil(bytes.length / density);
             paint.setStrokeWidth(barWidth - 4);
-
-            for (int i = barWidth / 2, k = 0;
-                 i < getWidth() && k < bytes.length;
-                 i += barWidth, k += div) {
+            int k = 0;
+            for (int i = barWidth / 2; i < getWidth() && k < bytes.length; i += barWidth) {
                 int top = canvas.getHeight() +
                         ((byte) (Math.abs(bytes[k]) + 128)) * canvas.getHeight() / 128;
                 canvas.drawLine(i, getHeight(), i, top, paint);
+                k += div;
             }
             super.onDraw(canvas);
         }

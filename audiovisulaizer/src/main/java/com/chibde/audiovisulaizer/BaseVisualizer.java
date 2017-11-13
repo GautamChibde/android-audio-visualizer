@@ -93,6 +93,10 @@ abstract public class BaseVisualizer extends View {
         visualizer.setEnabled(true);
     }
 
+    public void release() {
+        visualizer.release();
+    }
+
     public Visualizer getVisualizer() {
         return visualizer;
     }
