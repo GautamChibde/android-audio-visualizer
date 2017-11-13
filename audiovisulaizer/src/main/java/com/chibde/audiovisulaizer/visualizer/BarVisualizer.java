@@ -1,3 +1,18 @@
+/*
+* Copyright (C) 2017 Gautam Chibde
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 package com.chibde.audiovisulaizer.visualizer;
 
 import android.content.Context;
@@ -11,7 +26,7 @@ import android.util.AttributeSet;
 import com.chibde.audiovisulaizer.BaseVisualizer;
 
 /**
- * Created by gautam on 28/10/17.
+ * Created by gautam chibde on 28/10/17.
  */
 
 public class BarVisualizer extends BaseVisualizer {
@@ -55,11 +70,14 @@ public class BarVisualizer extends BaseVisualizer {
         if (bytes != null) {
             paint.setStyle(Paint.Style.FILL);
             int barWidth = getWidth() / density;
+            int div = (int) Math.ceil(bytes.length / density);
             paint.setStrokeWidth(barWidth - 4);
 
-            for (int i = 0; i < bytes.length; i += barWidth) {
+            for (int i = barWidth / 2, k = 0;
+                 i < getWidth() && k < bytes.length;
+                 i += barWidth, k += div) {
                 int top = canvas.getHeight() +
-                        ((byte) (Math.abs(bytes[i]) + 128)) * canvas.getHeight() / 128;
+                        ((byte) (Math.abs(bytes[k]) + 128)) * canvas.getHeight() / 128;
                 canvas.drawLine(i, getHeight(), i, top, paint);
             }
             super.onDraw(canvas);

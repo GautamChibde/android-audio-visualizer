@@ -1,3 +1,18 @@
+/*
+* Copyright (C) 2017 Gautam Chibde
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 package com.chibde.audiovisulaizer.visualizer;
 
 import android.content.Context;
@@ -13,10 +28,10 @@ import android.util.AttributeSet;
 import com.chibde.audiovisulaizer.BaseVisualizer;
 
 /**
- * Created by gautam on 29/10/17.
+ * Created by gautam chibde on 29/10/17.
  */
 
-public class BlazingColorVisualizer extends BaseVisualizer {
+class BlazingColorVisualizer extends BaseVisualizer {
     private Shader shader;
 
     public BlazingColorVisualizer(Context context) {
@@ -57,9 +72,9 @@ public class BlazingColorVisualizer extends BaseVisualizer {
     protected void onDraw(Canvas canvas) {
         if (bytes != null) {
             paint.setShader(shader);
-            for (int i = 0; i < bytes.length - 1; i++) {
+            for (int i = 0, k = 0; i < (bytes.length - 1) && k < bytes.length; i++, k++) {
                 int top = canvas.getHeight() +
-                        ((byte) (Math.abs(bytes[i]) + 128)) * canvas.getHeight() / 128;
+                        ((byte) (Math.abs(bytes[k]) + 128)) * canvas.getHeight() / 128;
                 canvas.drawLine(i, getHeight(), i, top, paint);
             }
             super.onDraw(canvas);
