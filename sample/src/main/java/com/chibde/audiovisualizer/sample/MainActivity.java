@@ -25,7 +25,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.chibde.audiovisulaizer.visualizer.CircleVisualizer;
+import com.chibde.audiovisulaizer.visualizer.BarVisualizer;
+import com.chibde.audiovisulaizer.visualizer.LineVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private MediaPlayer mediaPlayer;
     private ImageButton btnPlayPause;
-    private CircleVisualizer lineVisualizer;
+    private BarVisualizer lineVisualizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         this,
                         R.drawable.ic_pause_red_48dp));
             }
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            lineVisualizer.release();
         }
     }
 

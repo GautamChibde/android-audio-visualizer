@@ -26,12 +26,16 @@ import android.util.AttributeSet;
 import com.chibde.audiovisulaizer.BaseVisualizer;
 
 /**
+ * Custom view that creates a Bar visualizer effect for
+ * the android {@link android.media.MediaPlayer}
+ *
  * Created by gautam chibde on 28/10/17.
  */
 
 public class BarVisualizer extends BaseVisualizer {
 
     private int density = 50;
+    private int gap;
 
     public BarVisualizer(Context context) {
         super(context);
@@ -58,21 +62,37 @@ public class BarVisualizer extends BaseVisualizer {
 
     @Override
     protected void init() {
-
+        this.density = 50;
+        this.gap = 4;
+        paint.setStyle(Paint.Style.FILL);
     }
 
+    /**
+     * Sets the density to the Bar visualizer i.e the number of bars
+     * to be displayed. Density can vary from 10 to 256.
+     * by default the value is set to 50.
+     *
+     * @param density density of the bar visualizer
+     */
     public void setDensity(int density) {
+        if (density > 256) {
+            this.density = 256;
+        } else if (density < 10) {
+            this.density = 10;
+        }
         this.density = density;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (bytes != null) {
-            paint.setStyle(Paint.Style.FILL);
+
             int barWidth = getWidth() / density;
             int div = (int) Math.ceil(bytes.length / density);
-            paint.setStrokeWidth(barWidth - 4);
+            paint.setStrokeWidth(barWidth - gap);
+
             int k = 0;
+
             for (int i = barWidth / 2; i < getWidth() && k < bytes.length; i += barWidth) {
                 int top = canvas.getHeight() +
                         ((byte) (Math.abs(bytes[k]) + 128)) * canvas.getHeight() / 128;
@@ -83,4 +103,3 @@ public class BarVisualizer extends BaseVisualizer {
         }
     }
 }
-

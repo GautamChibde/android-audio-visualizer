@@ -26,6 +26,9 @@ import android.util.AttributeSet;
 import com.chibde.audiovisulaizer.BaseVisualizer;
 
 /**
+ * Custom view that creates a Bar visualizer effect for
+ * the android {@link android.media.MediaPlayer}
+ *
  * Created by gautam chibde on 28/10/17.
  */
 

@@ -27,6 +27,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
+ * Base class that contains common implementation for all
+ * visualizers.
  * Created by gautam chibde on 28/10/17.
  */
 
@@ -67,6 +69,11 @@ abstract public class BaseVisualizer extends View {
         paint.setStrokeWidth(6);
     }
 
+    /**
+     * Set color to visualizer with color resource id.
+     *
+     * @param color color resource id.
+     */
     public void setColor(int color) {
         this.color = color;
         this.paint.setColor(this.color);
