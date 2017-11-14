@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package com.chibde.audiovisulaizer.visualizer;
+package com.chibde.visualizer;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -23,7 +23,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 
-import com.chibde.audiovisulaizer.BaseVisualizer;
+import com.chibde.BaseVisualizer;
 
 /**
  * Custom view that creates a Bar visualizer effect for

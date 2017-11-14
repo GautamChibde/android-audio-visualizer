@@ -25,8 +25,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.chibde.audiovisulaizer.visualizer.BarVisualizer;
-import com.chibde.audiovisulaizer.visualizer.LineVisualizer;
+import com.chibde.visualizer.BarVisualizer;
+import com.chibde.visualizer.CircleVisualizer;
+import com.chibde.visualizer.LineVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private MediaPlayer mediaPlayer;
     private ImageButton btnPlayPause;
-    private BarVisualizer lineVisualizer;
+    private CircleVisualizer lineVisualizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

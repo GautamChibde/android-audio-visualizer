@@ -1,4 +1,4 @@
-package com.chibde.audiovisulaizer;
+package com.chibde;
 
 import org.junit.Test;
 

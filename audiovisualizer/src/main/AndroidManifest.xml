@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.chibde.audiovisulaizer">
+          package="com.chibde">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
