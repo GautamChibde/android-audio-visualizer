@@ -66,7 +66,6 @@ abstract public class BaseVisualizer extends View {
 
     private void init(AttributeSet attributeSet) {
         paint = new Paint();
-        paint.setStrokeWidth(6);
     }
 
     /**

@@ -35,6 +35,7 @@ import com.chibde.BaseVisualizer;
 public class LineVisualizer extends BaseVisualizer {
     private float[] points;
     private Rect rect = new Rect();
+    private float strokeWidth = 0.005f;
 
     public LineVisualizer(Context context) {
         super(context);
@@ -61,7 +62,20 @@ public class LineVisualizer extends BaseVisualizer {
 
     @Override
     protected void init() {
+    }
 
+    /**
+     * set Stroke width for your visualizer takes input between 1-10
+     *
+     * @param strokeWidth stroke width between 1-10
+     */
+    public void setStrokeWidth(int strokeWidth) {
+        if (strokeWidth > 10) {
+            this.strokeWidth = 10 * 0.005f;
+        } else if (strokeWidth < 1) {
+            this.strokeWidth = 0.005f;
+        }
+        this.strokeWidth = strokeWidth * 0.005f;
     }
 
     @Override
@@ -70,6 +84,7 @@ public class LineVisualizer extends BaseVisualizer {
             if (points == null || points.length < bytes.length * 4) {
                 points = new float[bytes.length * 4];
             }
+            paint.setStrokeWidth(getHeight() * strokeWidth);
             rect.set(0, 0, getWidth(), getHeight());
 
             for (int i = 0; i < bytes.length - 1; i++) {

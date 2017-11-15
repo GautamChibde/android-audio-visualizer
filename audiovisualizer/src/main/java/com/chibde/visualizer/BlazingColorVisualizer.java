@@ -28,6 +28,8 @@ import android.util.AttributeSet;
 import com.chibde.BaseVisualizer;
 
 /**
+ * TODO
+ *
  * Created by gautam chibde on 29/10/17.
  */
 

@@ -33,6 +33,7 @@ import com.chibde.BaseVisualizer;
 public class CircleVisualizer extends BaseVisualizer {
     private float[] points;
     private float radiusMultiplier = 1;
+    private float strokeWidth = 0.005f;
 
     public CircleVisualizer(Context context) {
         super(context);
@@ -60,6 +61,20 @@ public class CircleVisualizer extends BaseVisualizer {
     }
 
     /**
+     * set Stroke width for your visualizer takes input between 1-10
+     *
+     * @param strokeWidth stroke width between 1-10
+     */
+    public void setStrokeWidth(int strokeWidth) {
+        if (strokeWidth > 10) {
+            this.strokeWidth = 10 * 0.005f;
+        } else if (strokeWidth < 1) {
+            this.strokeWidth = 0.005f;
+        }
+        this.strokeWidth = strokeWidth * 0.005f;
+    }
+
+    /**
      * This method sets the multiplier to the circle, by default the
      * multiplier is set to 1. you can provide value more than 1 to
      * increase size of the circle visualizer.
@@ -73,6 +88,7 @@ public class CircleVisualizer extends BaseVisualizer {
     @Override
     protected void onDraw(Canvas canvas) {
         if (bytes != null) {
+            paint.setStrokeWidth(getHeight() * strokeWidth);
             if (points == null || points.length < bytes.length * 4) {
                 points = new float[bytes.length * 4];
             }
