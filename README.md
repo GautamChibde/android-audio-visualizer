@@ -9,6 +9,11 @@
 # How to use
  
  Refer to the [sample](https://github.com/GautamChibde/android-audio-visualizer/tree/master/sample) project on how to use visualizer or refer to [WIKI](https://github.com/GautamChibde/android-audio-visualizer/wiki) docs.
+ 
+ ## Visualizers
+* [LineVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Line-Visualizer)
+* [BarVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Bar-Visualizer)
+* [CircleVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Circle-Visualizer)
 
 
 License
