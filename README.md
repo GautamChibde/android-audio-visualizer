@@ -1,10 +1,20 @@
 # android-audio-visualizer
 
-[![Build Status](https://travis-ci.org/GautamChibde/android-audio-visualizer.svg?branch=master)](https://travis-ci.org/GautamChibde/android-audio-visualizer) [![codebeat badge](https://codebeat.co/badges/0f34e433-9e0b-44a4-90da-b53d644848b9)](https://codebeat.co/projects/github-com-gautamchibde-android-audio-visualizer-master)
+[![Build Status](https://travis-ci.org/GautamChibde/android-audio-visualizer.svg?branch=master)](https://travis-ci.org/GautamChibde/android-audio-visualizer) [![codebeat badge](https://codebeat.co/badges/0f34e433-9e0b-44a4-90da-b53d644848b9)](https://codebeat.co/projects/github-com-gautamchibde-android-audio-visualizer-master) [ ![Download](https://api.bintray.com/packages/gautamchibde/Audio-Visualizer/audiovisualizer/images/download.svg) ](https://bintray.com/gautamchibde/Audio-Visualizer/audiovisualizer/_latestVersion)
 
 # Demo
 
 ![Alt text](https://media.giphy.com/media/xUNda7SWNfxsrVVfVe/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1Ra7uWKuV1g23Ruw/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1R9Y4UmD8cRYfrc4/giphy.gif)
+
+# Importing the Library
+
+Add to build.gradle:
+```groovy
+dependencies {
+    compile 'com.chibde:audiovisualizer:0.1.0';
+}
+```
+Library is available in jcenter repository
 
 # How to use
  
