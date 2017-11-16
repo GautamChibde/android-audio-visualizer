@@ -1,8 +1,10 @@
 # android-audio-visualizer
 
-[![Build Status](https://travis-ci.org/GautamChibde/android-audio-visualizer.svg?branch=master)](https://travis-ci.org/GautamChibde/android-audio-visualizer) [![codebeat badge](https://codebeat.co/badges/0f34e433-9e0b-44a4-90da-b53d644848b9)](https://codebeat.co/projects/github-com-gautamchibde-android-audio-visualizer-master) [ ![Download](https://api.bintray.com/packages/gautamchibde/Audio-Visualizer/audiovisualizer/images/download.svg) ](https://bintray.com/gautamchibde/Audio-Visualizer/audiovisualizer/_latestVersion)
+[![Build Status](https://travis-ci.org/GautamChibde/android-audio-visualizer.svg?branch=master)](https://travis-ci.org/GautamChibde/android-audio-visualizer) [![codebeat badge](https://codebeat.co/badges/0f34e433-9e0b-44a4-90da-b53d644848b9)](https://codebeat.co/projects/github-com-gautamchibde-android-audio-visualizer-master) [ ![Download](https://api.bintray.com/packages/gautamchibde/Audio-Visualizer/audiovisualizer/images/download.svg) ](https://bintray.com/gautamchibde/Audio-Visualizer/audiovisualizer/_latestVersion) [![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15)
 
 # Demo
+
+Check out the Demo app at [appetize.io](https://appetize.io/embed/1qw6e9jt1805h4g8chmjf0be4c?device=nexus5&scale=75&orientation=portrait&osVersion=7.1)
 
 ![Alt text](https://media.giphy.com/media/xUNda7SWNfxsrVVfVe/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1Ra7uWKuV1g23Ruw/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1R9Y4UmD8cRYfrc4/giphy.gif)
 
