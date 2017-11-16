@@ -1,29 +1,5 @@
 apply plugin: 'com.android.library'
 apply from: '../config/quality/quality.gradle'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
-
-ext {
-    bintrayRepo = 'Audio-Visualizer'
-    bintrayName = 'audiovisualizer'
-    publishedGroupId = 'com.chibde'
-    libraryName = 'android-audio-visualizer'
-    artifact = 'audiovisualizer'
-
-    libraryDescription = 'Audio visualisation for android MediaPlayer'
-
-    siteUrl = 'https://github.com/GautamChibde/android-audio-visualizer'
-    gitUrl = 'https://github.com/GautamChibde/android-audio-visualizer.git'
-
-    libraryVersion = '0.1.0'
-    developerId = 'gautamchibde'
-    developerName = 'Gautam Chibde'
-    developerEmail = 'gautamchibde@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
 
 android {
     compileSdkVersion 26
@@ -54,6 +30,3 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
 }
-
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
