@@ -13,7 +13,7 @@ Check out the Demo app at [appetize.io](https://appetize.io/embed/1qw6e9jt1805h4
 Add to build.gradle:
 ```groovy
 dependencies {
-    compile 'com.chibde:audiovisualizer:0.1.0';
+    compile 'com.chibde:audiovisualizer:1.0.0'
 }
 ```
 Library is available in jcenter repository
