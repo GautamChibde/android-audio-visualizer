@@ -6,14 +6,14 @@
 
 Check out the Demo app at [appetize.io](https://appetize.io/embed/1qw6e9jt1805h4g8chmjf0be4c?device=nexus5&scale=75&orientation=portrait&osVersion=7.1)
 
-![Alt text](https://media.giphy.com/media/xUNda7SWNfxsrVVfVe/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1Ra7uWKuV1g23Ruw/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1R9Y4UmD8cRYfrc4/giphy.gif)
+![Alt text](https://media.giphy.com/media/xUNda7SWNfxsrVVfVe/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1Ra7uWKuV1g23Ruw/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1R9Y4UmD8cRYfrc4/giphy.gif)  ![Alt text](https://media.giphy.com/media/xUNd9W8BqFSia9UjYs/giphy.gif)
 
 # Importing the Library
 
 Add to build.gradle:
 ```groovy
 dependencies {
-    compile 'com.chibde:audiovisualizer:1.0.0'
+    compile 'com.chibde:audiovisualizer:1.1.0'
 }
 ```
 Library is available in jcenter repository
@@ -26,6 +26,7 @@ Library is available in jcenter repository
 * [LineVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Line-Visualizer)
 * [BarVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Bar-Visualizer)
 * [CircleVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Circle-Visualizer)
+* [Circle Bar Visualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Circle-Bar-Visualizer)
 
 
 License
