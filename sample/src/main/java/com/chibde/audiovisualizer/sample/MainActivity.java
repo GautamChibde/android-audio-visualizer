@@ -22,6 +22,7 @@ import android.view.View;
 
 import com.chibde.audiovisualizer.sample.visualizer.BarVisualizerActivity;
 import com.chibde.audiovisualizer.sample.visualizer.CircleVisualizerActivity;
+import com.chibde.audiovisualizer.sample.visualizer.CircleBarVisualizerActivity;
 import com.chibde.audiovisualizer.sample.visualizer.LineVisualizerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void circle(View view) {
         startActivity(CircleVisualizerActivity.class);
+    }
+
+    public void circleBar(View view) {
+        startActivity(CircleBarVisualizerActivity.class);
     }
 
     public void startActivity(Class clazz) {

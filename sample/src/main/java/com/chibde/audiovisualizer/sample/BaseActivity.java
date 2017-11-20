@@ -62,7 +62,7 @@ abstract public class BaseActivity extends AppCompatActivity {
     }
 
     private void setPlayer() {
-        mediaPlayer = MediaPlayer.create(this, R.raw.sample_jingle_bell);
+        mediaPlayer = MediaPlayer.create(this, R.raw.red_e);
         mediaPlayer.setLooping(false);
         init();
     }

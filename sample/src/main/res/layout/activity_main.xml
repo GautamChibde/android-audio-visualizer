@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <Button
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
         android:background="@color/custom"
         android:onClick="line"
         android:text="@string/line_visualizer"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"/>
 
     <Button
         android:layout_width="match_parent"
@@ -23,14 +23,27 @@
         android:background="@color/custom"
         android:onClick="bar"
         android:text="@string/bar_visualizer"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/custom"
+        android:onClick="circle"
+        android:text="@string/circle_visualizer"
+        android:textColor="@color/white"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@color/custom"
-        android:onClick="circle"
-        android:text="@string/circle_visualizer"
-        android:textColor="@color/white" />
+        android:onClick="circleBar"
+        android:text="@string/circle_bar_visualizer"
+        android:textColor="@color/white"/>
 </LinearLayout>

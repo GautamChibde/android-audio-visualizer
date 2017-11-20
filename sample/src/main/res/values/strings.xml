@@ -5,4 +5,5 @@
     <string name="line_visualizer">Line Visualizer</string>
     <string name="bar_visualizer">Bar Visualizer</string>
     <string name="circle_visualizer">Circle Visualizer</string>
+    <string name="circle_bar_visualizer">Circle Bar Visualizer</string>
 </resources>
