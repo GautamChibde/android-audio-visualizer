@@ -6,7 +6,7 @@
 
 Check out the Demo app at [appetize.io](https://appetize.io/embed/1qw6e9jt1805h4g8chmjf0be4c?device=nexus5&scale=75&orientation=portrait&osVersion=7.1)
 
-![Alt text](https://media.giphy.com/media/xUNda7SWNfxsrVVfVe/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1Ra7uWKuV1g23Ruw/giphy.gif)  ![Alt text](https://media.giphy.com/media/xT1R9Y4UmD8cRYfrc4/giphy.gif)  ![Alt text](https://media.giphy.com/media/xUNd9W8BqFSia9UjYs/giphy.gif)
+![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511264188/giphy_3_fsiysm.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511264189/giphy_qak1sa.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511264188/giphy_1_y3cbv3.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511264189/giphy_2_ehid4v.gif)
 
 # Importing the Library
 
