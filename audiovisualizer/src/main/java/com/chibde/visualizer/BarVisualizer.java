@@ -18,9 +18,7 @@ package com.chibde.visualizer;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 
 import com.chibde.BaseVisualizer;
@@ -50,14 +48,6 @@ public class BarVisualizer extends BaseVisualizer {
                          @Nullable AttributeSet attrs,
                          int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BarVisualizer(Context context,
-                         @Nullable AttributeSet attrs,
-                         int defStyleAttr,
-                         int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
