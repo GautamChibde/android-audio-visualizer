@@ -10,7 +10,10 @@ import android.util.AttributeSet;
 import com.chibde.BaseVisualizer;
 
 /**
- * Created by gautam on 22/11/17.
+ * Custom view that creates a Line and Bar visualizer effect for
+ * the android {@link android.media.MediaPlayer}
+ * <p>
+ * Created by gautam chibde on 22/11/17.
  */
 
 public class LineBarVisualizer extends BaseVisualizer {
@@ -74,8 +77,14 @@ public class LineBarVisualizer extends BaseVisualizer {
 
             for (int i = 0; i < density; i++) {
                 int x = (int) Math.ceil(i * div);
-                int top = canvas.getHeight() / 2 + (128 - Math.abs(bytes[x])) * canvas.getHeight() / 128;
-                int bottom = canvas.getHeight() / 2 - (128 - Math.abs(bytes[x])) * canvas.getHeight() / 128;
+                int top = canvas.getHeight() / 2
+                        + (128 - Math.abs(bytes[x]))
+                        * (canvas.getHeight() / 2) / 128;
+
+                int bottom = canvas.getHeight() / 2
+                        - (128 - Math.abs(bytes[x]))
+                        * (canvas.getHeight() / 2) / 128;
+
                 canvas.drawLine(i * barWidth, bottom, i * barWidth, getHeight() / 2, paint);
                 canvas.drawLine(i * barWidth, top, i * barWidth, getHeight() / 2, paint);
             }

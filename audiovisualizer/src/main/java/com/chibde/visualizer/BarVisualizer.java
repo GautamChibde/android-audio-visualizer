@@ -32,7 +32,7 @@ import com.chibde.BaseVisualizer;
 
 public class BarVisualizer extends BaseVisualizer {
 
-    private int density = 50;
+    private float density = 50;
     private int gap;
 
     public BarVisualizer(Context context) {
@@ -64,30 +64,27 @@ public class BarVisualizer extends BaseVisualizer {
      *
      * @param density density of the bar visualizer
      */
-    public void setDensity(int density) {
+    public void setDensity(float density) {
+        this.density = density;
         if (density > 256) {
             this.density = 256;
         } else if (density < 10) {
             this.density = 10;
         }
-        this.density = density;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (bytes != null) {
-
-            int barWidth = getWidth() / density;
-            int div = (int) Math.ceil(bytes.length / density);
+            float barWidth = getWidth() / density;
+            float div = bytes.length / density;
             paint.setStrokeWidth(barWidth - gap);
 
-            int k = 0;
-
-            for (int i = barWidth / 2; i < getWidth() && k < bytes.length; i += barWidth) {
+            for (int i = 0; i < density; i++) {
+                int x = (int) Math.ceil(i * div);
                 int top = canvas.getHeight() +
-                        ((byte) (Math.abs(bytes[k]) + 128)) * canvas.getHeight() / 128;
-                canvas.drawLine(i, getHeight(), i, top, paint);
-                k += div;
+                        ((byte) (Math.abs(bytes[x]) + 128)) * canvas.getHeight() / 128;
+                canvas.drawLine(i * barWidth, getHeight(), i * barWidth, top, paint);
             }
             super.onDraw(canvas);
         }
