@@ -19,9 +19,7 @@ package com.chibde.visualizer;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 
 import com.chibde.BaseVisualizer;
@@ -53,14 +51,6 @@ public class CircleBarVisualizer extends BaseVisualizer {
         super(context, attrs, defStyleAttr);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public CircleBarVisualizer(Context context,
-                               @Nullable AttributeSet attrs,
-                               int defStyleAttr,
-                               int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
     @Override
     protected void init() {
         paint.setStyle(Paint.Style.STROKE);
@@ -72,7 +62,7 @@ public class CircleBarVisualizer extends BaseVisualizer {
     protected void onDraw(Canvas canvas) {
         if (radius == -1) {
             radius = getHeight() < getWidth() ? getHeight() : getWidth();
-            radius = (int) (radius * 0.8 / 2);
+            radius = (int) (radius * 0.65 / 2);
             double circumference = 2 * Math.PI * radius;
             paint.setStrokeWidth((float) (circumference / 120));
             circlePaint.setStyle(Paint.Style.STROKE);

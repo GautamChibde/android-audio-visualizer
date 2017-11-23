@@ -41,9 +41,22 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:background="@color/custom"
         android:onClick="circleBar"
         android:text="@string/circle_bar_visualizer"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/custom"
+        android:onClick="lineBar"
+        android:text="@string/line_bar_visualizer"
         android:textColor="@color/white"/>
 </LinearLayout>

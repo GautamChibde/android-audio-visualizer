@@ -21,8 +21,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.chibde.audiovisualizer.sample.visualizer.BarVisualizerActivity;
-import com.chibde.audiovisualizer.sample.visualizer.CircleVisualizerActivity;
 import com.chibde.audiovisualizer.sample.visualizer.CircleBarVisualizerActivity;
+import com.chibde.audiovisualizer.sample.visualizer.CircleVisualizerActivity;
+import com.chibde.audiovisualizer.sample.visualizer.LineBarVisualizerActivity;
 import com.chibde.audiovisualizer.sample.visualizer.LineVisualizerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void circleBar(View view) {
         startActivity(CircleBarVisualizerActivity.class);
+    }
+
+    public void lineBar(View view) {
+        startActivity(LineBarVisualizerActivity.class);
     }
 
     public void startActivity(Class clazz) {

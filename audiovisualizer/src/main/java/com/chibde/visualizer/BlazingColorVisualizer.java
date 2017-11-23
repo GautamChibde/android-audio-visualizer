@@ -20,9 +20,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 
 import com.chibde.BaseVisualizer;
@@ -49,14 +47,6 @@ class BlazingColorVisualizer extends BaseVisualizer {
                                   @Nullable AttributeSet attrs,
                                   int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BlazingColorVisualizer(Context context,
-                                  @Nullable AttributeSet attrs,
-                                  int defStyleAttr,
-                                  int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
