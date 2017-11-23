@@ -20,9 +20,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.MediaPlayer;
 import android.media.audiofx.Visualizer;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -52,14 +50,6 @@ abstract public class BaseVisualizer extends View {
 
     public BaseVisualizer(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(attrs);
-        init();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BaseVisualizer(Context context,
-                          @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
         init();
     }
@@ -94,7 +84,7 @@ abstract public class BaseVisualizer extends View {
             public void onFftDataCapture(Visualizer visualizer, byte[] bytes,
                                          int samplingRate) {
             }
-        }, Visualizer.getMaxCaptureRate() / 2, true, true);
+        }, Visualizer.getMaxCaptureRate() / 2, true, false);
 
         visualizer.setEnabled(true);
     }

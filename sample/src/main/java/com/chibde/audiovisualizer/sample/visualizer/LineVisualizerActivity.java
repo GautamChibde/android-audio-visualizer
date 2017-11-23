@@ -24,17 +24,10 @@ import com.chibde.audiovisualizer.sample.R;
 import com.chibde.visualizer.LineVisualizer;
 
 public class LineVisualizerActivity extends BaseActivity {
-    private LineVisualizer lineVisualizer;
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        lineVisualizer.release();
-    }
 
     @Override
     protected void init() {
-        lineVisualizer = findViewById(R.id.visualizer);
+        LineVisualizer lineVisualizer = findViewById(R.id.visualizer);
         // set custom color to the line.
         lineVisualizer.setColor(ContextCompat.getColor(this, R.color.custom));
 

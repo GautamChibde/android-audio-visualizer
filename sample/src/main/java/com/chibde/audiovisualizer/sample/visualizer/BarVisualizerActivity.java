@@ -24,17 +24,10 @@ import com.chibde.audiovisualizer.sample.R;
 import com.chibde.visualizer.BarVisualizer;
 
 public class BarVisualizerActivity extends BaseActivity {
-    private BarVisualizer barVisualizer;
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        barVisualizer.release();
-    }
 
     @Override
     protected void init() {
-        barVisualizer = findViewById(R.id.visualizer);
+        BarVisualizer barVisualizer = findViewById(R.id.visualizer);
 
         // set custom color to the line.
         barVisualizer.setColor(ContextCompat.getColor(this, R.color.custom));

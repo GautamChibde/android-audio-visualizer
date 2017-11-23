@@ -10,17 +10,9 @@ import com.chibde.visualizer.CircleBarVisualizer;
 
 public class CircleBarVisualizerActivity extends BaseActivity {
 
-    private CircleBarVisualizer circleBarVisualizer;
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        circleBarVisualizer.release();
-    }
-
     @Override
     protected void init() {
-        circleBarVisualizer = findViewById(R.id.visualizer);
+        CircleBarVisualizer circleBarVisualizer = findViewById(R.id.visualizer);
         circleBarVisualizer.setColor(ContextCompat.getColor(this, R.color.custom));
         circleBarVisualizer.setPlayer(mediaPlayer);
     }

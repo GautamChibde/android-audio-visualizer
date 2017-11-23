@@ -47,17 +47,22 @@ abstract public class BaseActivity extends AppCompatActivity {
         } else {
             throw new NullPointerException("Provide layout file for the activity");
         }
-        if (getActionBar() != null) {
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(WRITE_EXTERNAL_STORAGE_PERMS, AUDIO_PERMISSION_REQUEST_CODE);
-            } else {
-                setPlayer();
-            }
+        setActionBar();
+        initialize();
+    }
+
+    private void initialize() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(WRITE_EXTERNAL_STORAGE_PERMS, AUDIO_PERMISSION_REQUEST_CODE);
         } else {
             setPlayer();
+        }
+    }
+
+    private void setActionBar() {
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
@@ -83,7 +88,12 @@ abstract public class BaseActivity extends AppCompatActivity {
             @NonNull int[] grantResults) {
         switch (requestCode) {
             case AUDIO_PERMISSION_REQUEST_CODE:
-                setPlayer();
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    setPlayer();
+                } else {
+                    this.finish();
+                }
         }
     }
 

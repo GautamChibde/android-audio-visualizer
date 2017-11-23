@@ -24,17 +24,10 @@ import com.chibde.audiovisualizer.sample.R;
 import com.chibde.visualizer.CircleVisualizer;
 
 public class CircleVisualizerActivity extends BaseActivity {
-    private CircleVisualizer circleVisualizer;
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        circleVisualizer.release();
-    }
 
     @Override
     protected void init() {
-        circleVisualizer = findViewById(R.id.visualizer);
+        CircleVisualizer circleVisualizer = findViewById(R.id.visualizer);
         // set custom color to the line.
         circleVisualizer.setColor(ContextCompat.getColor(this, R.color.custom));
 

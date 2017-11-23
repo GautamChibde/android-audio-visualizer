@@ -10,17 +10,9 @@ import com.chibde.visualizer.LineBarVisualizer;
 
 public class LineBarVisualizerActivity extends BaseActivity {
 
-    private LineBarVisualizer lineBarVisualizer;
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        lineBarVisualizer.release();
-    }
-
     @Override
     protected void init() {
-        lineBarVisualizer = findViewById(R.id.visualizer);
+        LineBarVisualizer lineBarVisualizer = findViewById(R.id.visualizer);
 
         // set custom color to the line.
         lineBarVisualizer.setColor(ContextCompat.getColor(this, R.color.custom));
