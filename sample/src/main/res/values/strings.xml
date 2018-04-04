@@ -7,4 +7,5 @@
     <string name="circle_visualizer">Circle Visualizer</string>
     <string name="circle_bar_visualizer">Circle Bar Visualizer</string>
     <string name="line_bar_visualizer">Line Bar Visualizer</string>
+    <string name="activity_with_service">Activity With Service</string>
 </resources>

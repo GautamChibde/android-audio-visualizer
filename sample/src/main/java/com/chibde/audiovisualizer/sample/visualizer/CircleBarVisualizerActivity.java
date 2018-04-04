@@ -29,7 +29,7 @@ public class CircleBarVisualizerActivity extends BaseActivity {
     protected void init() {
         CircleBarVisualizer circleBarVisualizer = findViewById(R.id.visualizer);
         circleBarVisualizer.setColor(ContextCompat.getColor(this, R.color.custom));
-        circleBarVisualizer.setPlayer(mediaPlayer);
+        circleBarVisualizer.setPlayer(mediaPlayer.getAudioSessionId());
     }
 
     public void replay(View view) {

@@ -35,7 +35,7 @@ public class LineVisualizerActivity extends BaseActivity {
         lineVisualizer.setStrokeWidth(1);
 
         // Set you media player to the visualizer.
-        lineVisualizer.setPlayer(mediaPlayer);
+        lineVisualizer.setPlayer(mediaPlayer.getAudioSessionId());
     }
 
     public void replay(View view) {

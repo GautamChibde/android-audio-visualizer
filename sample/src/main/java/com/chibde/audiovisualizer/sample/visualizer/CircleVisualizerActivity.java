@@ -38,7 +38,7 @@ public class CircleVisualizerActivity extends BaseActivity {
         circleVisualizer.setStrokeWidth(1);
 
         // Set your media player to the visualizer.
-        circleVisualizer.setPlayer(mediaPlayer);
+        circleVisualizer.setPlayer(mediaPlayer.getAudioSessionId());
     }
 
     public void replay(View view) {

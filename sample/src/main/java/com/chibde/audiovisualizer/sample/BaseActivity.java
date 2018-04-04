@@ -31,7 +31,7 @@ import android.widget.ImageButton;
  * Created by gautam chibde on 18/11/17.
  */
 abstract public class BaseActivity extends AppCompatActivity {
-    private static final int AUDIO_PERMISSION_REQUEST_CODE = 102;
+    public static final int AUDIO_PERMISSION_REQUEST_CODE = 102;
 
     public static final String[] WRITE_EXTERNAL_STORAGE_PERMS = {
             Manifest.permission.RECORD_AUDIO

@@ -50,5 +50,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
+
+        <service
+            android:name=".MediaPlayerService"
+            android:exported="false" />
+
+        <activity android:name=".ServiceExampleActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 </manifest>

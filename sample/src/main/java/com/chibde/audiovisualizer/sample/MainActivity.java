@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(LineBarVisualizerActivity.class);
     }
 
+    public void service(View view) {
+        startActivity(ServiceExampleActivity.class);
+    }
+
     public void startActivity(Class clazz) {
         startActivity(new Intent(this, clazz));
     }
