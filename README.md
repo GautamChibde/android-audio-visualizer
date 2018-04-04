@@ -11,7 +11,7 @@
 Add to build.gradle:
 ```groovy
 dependencies {
-    compile 'com.chibde:audiovisualizer:2.0.0'
+    compile 'com.chibde:audiovisualizer:2.0.1'
 }
 ```
 Library is available in jcenter repository
