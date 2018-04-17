@@ -91,17 +91,18 @@ public class LineBarVisualizer extends BaseVisualizer {
             paint.setStrokeWidth(barWidth - gap);
 
             for (int i = 0; i < density; i++) {
-                int x = (int) Math.ceil(i * div);
+                int bytePosition = (int) Math.ceil(i * div);
                 int top = canvas.getHeight() / 2
-                        + (128 - Math.abs(bytes[x]))
+                        + (128 - Math.abs(bytes[bytePosition]))
                         * (canvas.getHeight() / 2) / 128;
 
                 int bottom = canvas.getHeight() / 2
-                        - (128 - Math.abs(bytes[x]))
+                        - (128 - Math.abs(bytes[bytePosition]))
                         * (canvas.getHeight() / 2) / 128;
 
-                canvas.drawLine(i * barWidth, bottom, i * barWidth, getHeight() / 2, paint);
-                canvas.drawLine(i * barWidth, top, i * barWidth, getHeight() / 2, paint);
+                float barX = (i * barWidth) + (barWidth / 2);
+                canvas.drawLine(barX, bottom, barX, canvas.getHeight() / 2, paint);
+                canvas.drawLine(barX, top, barX, canvas.getHeight() / 2, paint);
             }
             super.onDraw(canvas);
         }
