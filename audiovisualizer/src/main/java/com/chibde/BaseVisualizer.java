@@ -100,6 +100,8 @@ abstract public class BaseVisualizer extends View {
 
     public void release() {
         visualizer.release();
+        bytes = null;
+        invalidate();
     }
 
     public Visualizer getVisualizer() {
