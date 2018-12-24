@@ -18,7 +18,7 @@ package com.chibde.visualizer;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.chibde.BaseVisualizer;
@@ -82,10 +82,10 @@ public class BarVisualizer extends BaseVisualizer {
 
             for (int i = 0; i < density; i++) {
                 int bytePosition = (int) Math.ceil(i * div);
-                int top = canvas.getHeight() +
-                        ((byte) (Math.abs(bytes[bytePosition]) + 128)) * canvas.getHeight() / 128;
+                int top = getHeight() +
+                        ((byte) (Math.abs(bytes[bytePosition]) + 128)) * getHeight() / 128;
                 float barX = (i * barWidth) + (barWidth / 2);
-                canvas.drawLine(barX, canvas.getHeight(), barX, top, paint);
+                canvas.drawLine(barX, getHeight(), barX, top, paint);
             }
             super.onDraw(canvas);
         }

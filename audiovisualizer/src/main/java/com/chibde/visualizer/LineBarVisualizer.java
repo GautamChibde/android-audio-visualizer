@@ -19,7 +19,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.chibde.BaseVisualizer;
@@ -92,17 +92,17 @@ public class LineBarVisualizer extends BaseVisualizer {
 
             for (int i = 0; i < density; i++) {
                 int bytePosition = (int) Math.ceil(i * div);
-                int top = canvas.getHeight() / 2
+                int top = getHeight() / 2
                         + (128 - Math.abs(bytes[bytePosition]))
-                        * (canvas.getHeight() / 2) / 128;
+                        * (getHeight() / 2) / 128;
 
-                int bottom = canvas.getHeight() / 2
+                int bottom = getHeight() / 2
                         - (128 - Math.abs(bytes[bytePosition]))
-                        * (canvas.getHeight() / 2) / 128;
+                        * (getHeight() / 2) / 128;
 
                 float barX = (i * barWidth) + (barWidth / 2);
-                canvas.drawLine(barX, bottom, barX, canvas.getHeight() / 2, paint);
-                canvas.drawLine(barX, top, barX, canvas.getHeight() / 2, paint);
+                canvas.drawLine(barX, bottom, barX, getHeight() / 2, paint);
+                canvas.drawLine(barX, top, barX, getHeight() / 2, paint);
             }
             super.onDraw(canvas);
         }

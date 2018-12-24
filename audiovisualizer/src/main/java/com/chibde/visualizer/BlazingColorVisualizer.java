@@ -20,7 +20,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.chibde.BaseVisualizer;
@@ -65,8 +65,8 @@ class BlazingColorVisualizer extends BaseVisualizer {
         if (bytes != null) {
             paint.setShader(shader);
             for (int i = 0, k = 0; i < (bytes.length - 1) && k < bytes.length; i++, k++) {
-                int top = canvas.getHeight() +
-                        ((byte) (Math.abs(bytes[k]) + 128)) * canvas.getHeight() / 128;
+                int top = getHeight() +
+                        ((byte) (Math.abs(bytes[k]) + 128)) * getHeight() / 128;
                 canvas.drawLine(i, getHeight(), i, top, paint);
             }
             super.onDraw(canvas);
