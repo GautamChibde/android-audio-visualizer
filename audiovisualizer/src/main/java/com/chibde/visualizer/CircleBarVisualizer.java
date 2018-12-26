@@ -19,7 +19,7 @@ package com.chibde.visualizer;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.chibde.BaseVisualizer;
@@ -78,7 +78,7 @@ public class CircleBarVisualizer extends BaseVisualizer {
 
             for (int i = 0; i < 120; i++, angle += 3) {
                 int x = (int) Math.ceil(i * 8.5);
-                int t = ((byte) (-Math.abs(bytes[x]) + 128)) * (canvas.getHeight() / 4) / 128;
+                int t = ((byte) (-Math.abs(bytes[x]) + 128)) * (getHeight() / 4) / 128;
 
                 points[i * 4] = (float) (getWidth() / 2
                         + radius
