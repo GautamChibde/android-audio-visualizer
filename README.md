@@ -4,7 +4,7 @@
 
 # Demo
 
-![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511428471/giphy_6_usdiet.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511431630/giphy_10_yye0fe.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511429199/giphy_7_usq2vh.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511430406/giphy_8_ww3jdz.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511427632/giphy_5_vixwer.gif) ![Alt text](![Alt text](https://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1565943473/Animated_GIF-downsized_large_wirzqk.gif))
+![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511428471/giphy_6_usdiet.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511431630/giphy_10_yye0fe.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511429199/giphy_7_usq2vh.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511430406/giphy_8_ww3jdz.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511427632/giphy_5_vixwer.gif) ![Alt text](https://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1565943473/Animated_GIF-downsized_large_wirzqk.gif)
 
 # Importing the Library
 
