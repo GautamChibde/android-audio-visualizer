@@ -25,6 +25,8 @@ import com.chibde.audiovisualizer.sample.visualizer.CircleBarVisualizerActivity;
 import com.chibde.audiovisualizer.sample.visualizer.CircleVisualizerActivity;
 import com.chibde.audiovisualizer.sample.visualizer.LineBarVisualizerActivity;
 import com.chibde.audiovisualizer.sample.visualizer.LineVisualizerActivity;
+import com.chibde.audiovisualizer.sample.visualizer.SquareBarVisualizerActivity;
+import com.chibde.visualizer.SquareBarVisualizer;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -55,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void service(View view) {
         startActivity(ServiceExampleActivity.class);
+    }
+
+    public void square(View view) {
+        startActivity(SquareBarVisualizerActivity.class);
     }
 
     public void startActivity(Class clazz) {

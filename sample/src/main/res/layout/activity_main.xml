@@ -67,9 +67,22 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:background="@color/custom"
         android:onClick="service"
         android:text="@string/activity_with_service"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/custom"
+        android:onClick="square"
+        android:text="@string/square_bar_visualizer"
         android:textColor="@color/white"/>
 </LinearLayout>
