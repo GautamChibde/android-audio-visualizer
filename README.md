@@ -4,14 +4,14 @@
 
 # Demo
 
-![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511428471/giphy_6_usdiet.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511431630/giphy_10_yye0fe.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511429199/giphy_7_usq2vh.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511430406/giphy_8_ww3jdz.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511427632/giphy_5_vixwer.gif)
+![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511428471/giphy_6_usdiet.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511431630/giphy_10_yye0fe.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511429199/giphy_7_usq2vh.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511430406/giphy_8_ww3jdz.gif)  ![Alt text](http://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1511427632/giphy_5_vixwer.gif) ![Alt text](![Alt text](https://res.cloudinary.com/dvkxfgprc/image/upload/c_scale,w_440/v1565943473/Animated_GIF-downsized_large_wirzqk.gif))
 
 # Importing the Library
 
 Add to build.gradle:
 ```groovy
 dependencies {
-    compile 'com.chibde:audiovisualizer:2.1.0'
+    compile 'com.chibde:audiovisualizer:2.2.0'
 }
 ```
 Library is available in jcenter repository
@@ -26,6 +26,7 @@ Library is available in jcenter repository
 * [CircleVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Circle-Visualizer)
 * [Circle Bar Visualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Circle-Bar-Visualizer)
 * [Line Bar Visualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Line-Bar-Visualizer)
+* [Square Bar Visualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/SquareBar-Visualizer)
 
 License
 =======

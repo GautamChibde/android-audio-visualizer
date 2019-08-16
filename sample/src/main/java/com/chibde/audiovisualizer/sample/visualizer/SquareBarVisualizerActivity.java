@@ -28,16 +28,19 @@ public class SquareBarVisualizerActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        SquareBarVisualizer barVisualizer = findViewById(R.id.visualizer);
+        SquareBarVisualizer squareBarVisualizer = findViewById(R.id.visualizer);
 
         // set custom color to the line.
-        barVisualizer.setColor(ContextCompat.getColor(this, R.color.custom));
+        squareBarVisualizer.setColor(ContextCompat.getColor(this, R.color.custom));
 
         // define custom number of bars you want in the visualizer between (10 - 256).
-        barVisualizer.setDensity(16);
+        squareBarVisualizer.setDensity(65);
+
+        // set Gap
+        squareBarVisualizer.setGap(2);
 
         // Set your media player to the visualizer.
-        barVisualizer.setPlayer(mediaPlayer.getAudioSessionId());
+        squareBarVisualizer.setPlayer(mediaPlayer.getAudioSessionId());
     }
 
     public void replay(View view) {

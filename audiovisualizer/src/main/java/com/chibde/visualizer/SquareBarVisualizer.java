@@ -54,7 +54,7 @@ public class SquareBarVisualizer extends BaseVisualizer {
     @Override
     protected void init() {
         this.density = 16;
-        this.gap = 10;
+        this.gap = 2;
         paint.setStyle(Paint.Style.FILL);
     }
 
@@ -69,9 +69,18 @@ public class SquareBarVisualizer extends BaseVisualizer {
         this.density = density;
         if (density > 256) {
             this.density = 256;
-        } else if (density < 10) {
-            this.density = 10;
+        } else if (density < 16) {
+            this.density = 16;
         }
+    }
+
+    /**
+     * Set Spacing between the Square in visualizer in pixel.
+     *
+     * @param gap Spacing between the square
+     */
+    public void setGap(int gap) {
+        this.gap = gap;
     }
 
     @Override
