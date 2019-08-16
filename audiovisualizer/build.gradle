@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply from: '../config/quality/quality.gradle'
 
 android {
     compileSdkVersion 28
