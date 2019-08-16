@@ -79,6 +79,7 @@ abstract public class BaseVisualizer extends View {
 
     public void setPlayer(int audioSessionId) {
         visualizer = new Visualizer(audioSessionId);
+        visualizer.setEnabled(false);
         visualizer.setCaptureSize(Visualizer.getCaptureSizeRange()[1]);
 
         visualizer.setDataCaptureListener(new Visualizer.OnDataCaptureListener() {
