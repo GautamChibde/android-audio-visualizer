@@ -1,24 +1,24 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
-
-ext {
-    bintrayRepo = 'Audio-Visualizer' // your repo name
-    bintrayName = 'audiovisualizer' // has to be same as your library module name
-    publishedGroupId = 'com.chibde' // your module package name
-    libraryName = 'audiovisualizer'
-    artifact = 'audiovisualizer' // has to be same as your library module name
-    libraryDescription = 'Audio visualisation for android MediaPlayer'
-    siteUrl = 'https://github.com/GautamChibde/android-audio-visualizer'
-    gitUrl = 'https://github.com/GautamChibde/android-audio-visualizer.git'
-    libraryVersion = '2.2.0'
-    developerId = 'gautamchibde'
-    developerName = 'Gautam Chibde'
-    developerEmail = 'gautamchibde@gmail.com'
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+//apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'maven-publish'
+//
+//ext {
+//    bintrayRepo = 'Audio-Visualizer' // your repo name
+//    bintrayName = 'audiovisualizer' // has to be same as your library module name
+//    publishedGroupId = 'com.chibde' // your module package name
+//    libraryName = 'audiovisualizer'
+//    artifact = 'audiovisualizer' // has to be same as your library module name
+//    libraryDescription = 'Audio visualisation for android MediaPlayer'
+//    siteUrl = 'https://github.com/GautamChibde/android-audio-visualizer'
+//    gitUrl = 'https://github.com/GautamChibde/android-audio-visualizer.git'
+//    libraryVersion = '2.2.0'
+//    developerId = 'gautamchibde'
+//    developerName = 'Gautam Chibde'
+//    developerEmail = 'gautamchibde@gmail.com'
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
 
 android {
     compileSdkVersion 28
@@ -50,5 +50,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
-apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
+//apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+//apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
