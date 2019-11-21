@@ -20,9 +20,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.MediaPlayer;
 import android.media.audiofx.Visualizer;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 /**
  * Base class that contains common implementation for all
@@ -100,6 +101,10 @@ abstract public class BaseVisualizer extends View {
     }
 
     public void release() {
+        //will be null if setPlayer hasn't yet been called
+        if (visualizer == null)
+            return;
+
         visualizer.release();
         bytes = null;
         invalidate();
