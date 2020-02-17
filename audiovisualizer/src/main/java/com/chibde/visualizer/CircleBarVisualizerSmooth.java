@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.chibde.visualizer;
+
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -39,7 +41,6 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
     private final static float _AngleStep = 360f / _BarCount;
     private float[] points;
     private float[] endPoints;
-    private float[] oldEndPoints;
     private float[] diffs;
     // Stores radius and step-counter which every invoking of "onDraw" requires them
     private Map<String, Integer> configs = null;
@@ -48,11 +49,14 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
         super(context);
     }
 
-    public CircleBarVisualizerSmooth(Context context, @Nullable AttributeSet attrs) {
+    public CircleBarVisualizerSmooth(Context context,
+                                     @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CircleBarVisualizerSmooth(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CircleBarVisualizerSmooth(Context context,
+                                     @Nullable AttributeSet attrs,
+                                     int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -63,8 +67,7 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
 
     /*
      * Returns the value of given configuration-key with handling
-     * 
-     * @see java.lang#NullPointerException
+     * @see  java.lang#NullPointerException
      */
     private int getConfig(String key) {
         Object obj = configs.get(key);
@@ -75,7 +78,7 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
     }
 
     /*
-     * set new value of given configuration-key
+     *set new value of given configuration-key
      */
     private void setConfig(String key, int value) {
         configs.put(key, value);
@@ -88,18 +91,19 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
         configs = new HashMap<>();
         // Temporary value to get smaller dimension of visualizer
         int smallerDimen;
-        if (getHeight() < getWidth())
-            smallerDimen = getHeight();
-        else
-            smallerDimen = getWidth();
+        if (getHeight() < getWidth()) smallerDimen = getHeight();
+        else smallerDimen = getWidth();
         // Calculates the radius of center circle.
         // Formula disclaimer : 0.65 = 3.14 * 0.02
-        int radius = (int) (smallerDimen * 0.65 / 2) * 6 / 10;
+        double t = smallerDimen * 0.65;
+        int radius = (int) (t / 2);
+        radius = radius * 6 / 10;
         // Width of each bar
-        double circumference = 1.5 * Math.PI * radius;
+        double circumference = Math.PI * radius;
+        circumference = 1.5 * circumference;
         paint.setStrokeWidth((float) (circumference / _BarCount));
         // Store initial configs
-        configs.put("needsInit", 1);// 0 = false, 1 = true
+        configs.put("needsInit", 1);//0 = false, 1 = true
         configs.put("radius", radius);
         configs.put("stepCounter", 0);
     }
@@ -114,50 +118,53 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
             // It needs to multiply by 4 because for every byte should be
             // StartX,StartY,EndX,EndY
             points = new float[bytes.length * 4];
-            // It needs to multiply by 2 because for every byte should be EndX,EndY
-            endPoints = new float[bytes.length * 2];
-            // It needs to multiply by 2 because for every byte should be OldEndX,OldEndY
-            oldEndPoints = new float[bytes.length * 2];
+            // It needs to multiply by 4 because for every byte should be EndX,EndY,OldEndX,OldEndY
+            endPoints = new float[bytes.length * 4];
             // It needs to multiply by 2 because there are X and Y differences
             diffs = new float[bytes.length * 2];
         }
     }
 
     /*
-     * Calculates the points of each round. Round represents amount of
-     * decrease/increase the length of bar
+     * Calculates the points of each round. Round represents amount of decrease/increase the length of bar
      */
-    private void calcRound(int round, int i, double angle, int t) {
+    private void calcRound(int i, double angle, int t) {
+        int indexM2 = i * 2;
+        int indexM4 = i * 4;
+        // Find the round by
+        int round = (int) (getConfig("stepCounter") % _StepsCount);
         if (round == 0) {
 
             // Set the old ends before assign new value the ends
-            oldEndPoints[i * 2] = endPoints[i * 2];
-            oldEndPoints[i * 2 + 1] = endPoints[i * 2 + 1];
+            endPoints[indexM4 + 2] = endPoints[indexM4];
+            endPoints[indexM4 + 3] = endPoints[indexM4 + 1];
 
+            float halfWidth = getWidth() / 2;
+            float halfHeight = getWidth() / 2;
+            float radius_p_t = getConfig("radius") + t;
             // Find endX
-            endPoints[i * 2] = (float) (getWidth() / 2 + (getConfig("radius") + t) * Math.cos(Math.toRadians(angle)));
+            endPoints[indexM4] = (float) (halfWidth + radius_p_t * Math.cos(Math.toRadians(angle)));
             // Find endY
-            endPoints[i * 2
-                    + 1] = (float) (getHeight() / 2 + (getConfig("radius") + t) * Math.sin(Math.toRadians(angle)));
+            endPoints[indexM4 + 1] = (float) (halfHeight + radius_p_t * Math.sin(Math.toRadians(angle)));
 
             // If it is not first time, so we have oldEnds for calculation of differences
             if (getConfig("needsInit") == 0) {
                 // Find differences of Xs
-                diffs[i * 2] = (endPoints[i * 2] - oldEndPoints[i * 2]) / _StepsCount;
+                diffs[indexM2] = (endPoints[indexM4] - endPoints[indexM4 + 2]) / _StepsCount;
                 // Find differences of Ys
-                diffs[i * 2 + 1] = (endPoints[i * 2 + 1] - oldEndPoints[i * 2 + 1]) / _StepsCount;
+                diffs[indexM2 + 1] = (endPoints[indexM4 + 1] - endPoints[indexM4 + 3]) / _StepsCount;
             } else {
                 // Set the old ends
-                oldEndPoints[i * 2] = endPoints[i * 2];
-                oldEndPoints[i * 2 + 1] = endPoints[i * 2 + 1];
+                endPoints[indexM4 + 2] = endPoints[indexM4];
+                endPoints[indexM4 + 3] = endPoints[indexM4 + 1];
             }
         }
         // Increase/Decrease the length of bar so oldEnd can match with ends
         if (round <= _StepsCount) {
             // Find endX to be drawn
-            points[i * 4 + 2] = oldEndPoints[i * 2] + diffs[i * 2] * round;
+            points[indexM4 + 2] = endPoints[indexM4 + 2] + diffs[indexM2] * round;
             // Find endX to be drawn
-            points[i * 4 + 3] = oldEndPoints[i * 2 + 1] + diffs[i * 2 + 1] * round;
+            points[indexM4 + 3] = endPoints[indexM4 + 3] + diffs[indexM2 + 1] * round;
         }
     }
 
@@ -187,7 +194,9 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
         // Check if bytes initiated before
         if (bytes == null || bytes.length == 0)
             return;
-        int round;
+
+        float halfWidth = getWidth() / 2;
+        float halfHeight = getWidth() / 2;
         int t;
 
         // Calculates ceiling regarded to bytes length. The ceiling is a coefficient for
@@ -204,24 +213,24 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
         // Fill the points
         fillPoints();
 
-        // Find the round by
-        round = (int) (getConfig("stepCounter") % _StepsCount);
 
         // We start with angle 0 and go against clock's direction
         double angle = 0;
         // Calculates every points and iterate along increasing angle
         for (int i = 0; i < _BarCount; i++, angle += _AngleStep) {
+            int indexM4 = i * 4;
             // Get length of bar
             t = getBarLength(i, ceiling);
             // First time calculates the startX and startY for every byte
             if (getConfig("needsInit") == 1) {
+
                 // Find startX
-                points[i * 4] = (float) (getWidth() / 2 + getConfig("radius") * Math.cos(Math.toRadians(angle)));
+                points[indexM4] = (float) (halfWidth + getConfig("radius") * Math.cos(Math.toRadians(angle)));
                 // Find startY
-                points[i * 4 + 1] = (float) (getHeight() / 2 + getConfig("radius") * Math.sin(Math.toRadians(angle)));
+                points[indexM4 + 1] = (float) (halfHeight + getConfig("radius") * Math.sin(Math.toRadians(angle)));
             }
             // Calculates points for current round
-            calcRound(round, i, angle, t);
+            calcRound(i, angle, t);
 
         }
         if (getConfig("needsInit") == 0)
