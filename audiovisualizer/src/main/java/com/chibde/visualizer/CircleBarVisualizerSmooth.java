@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.chibde.visualizer;
 
 import android.content.Context;
@@ -24,170 +23,215 @@ import androidx.annotation.Nullable;
 
 import android.util.AttributeSet;
 
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Custom view that creates a Circle and Bar visualizer effect for
- * the android {@link android.media.MediaPlayer}
+ * Custom view that creates a Circle and Bar visualizer effect for the android
+ * {@link android.media.MediaPlayer}
  * <p>
- * Created by gautam chibde on 20/11/17.
- * Smooth effect added by Ali heidari
+ * Created by gautam chibde on 20/11/17. Smooth effect added by Ali heidari
  */
 
 public class CircleBarVisualizerSmooth extends BaseVisualizer {
     private final static float _StepsCount = 2;
     private final static int _BarCount = 120;
     private final static float _AngleStep = 360f / _BarCount;
-    private double angle = 0;
     private float[] points;
     private float[] endPoints;
     private float[] oldEndPoints;
     private float[] diffs;
-    private int stepCounter = 0;
-    private int round = 0;
-    private int radius;
-    private int x, t;
-    private boolean needsInit = true;
+    // Stores radius and step-counter which every invoking of "onDraw" requires them
+    private Map<String, Integer> configs = null;
 
-    public CircleBarVisualizer(Context context) {
+    public CircleBarVisualizerSmooth(Context context) {
         super(context);
     }
 
-    public CircleBarVisualizer(Context context,
-                               @Nullable AttributeSet attrs) {
+    public CircleBarVisualizerSmooth(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CircleBarVisualizer(Context context,
-                               @Nullable AttributeSet attrs,
-                               int defStyleAttr) {
+    public CircleBarVisualizerSmooth(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @Override
     protected void init() {
         paint.setStyle(Paint.Style.STROKE);
-        radius = -1;
     }
 
-
+    /*
+     * Returns the value of given configuration-key with handling
+     * 
+     * @see java.lang#NullPointerException
+     */
+    private int getConfig(String key) {
+        Object obj = configs.get(key);
+        if (obj != null)
+            return (int) obj;
+        else
+            return 0;
+    }
 
     /*
-    Draw waveform
-    It calculates the StartX,StartY just once because it never changes.
-    Then calculates EndX, EndY, OldEndX and OldEndY every 3 frames.
-    So OldEndX and OldEndY can increase/decrease toward EndX and EndY respectively.
-    To perform such an action(Animation) you need differences of X and Y.
-    It achieves using EndX - OldEndX and EndY - OldEndY
-    Then find the steps using Differences / 3
-    Finally when OldEnd(s) matched to End(s) Need to set End with OldEnd value
-    And the action will be repeated until visualizer is running.
+     * set new value of given configuration-key
+     */
+    private void setConfig(String key, int value) {
+        configs.put(key, value);
+    }
+
+    /*
+     * Fill the initial configurations
+     */
+    private void fillConfigs() {
+        configs = new HashMap<>();
+        // Temporary value to get smaller dimension of visualizer
+        int smallerDimen;
+        if (getHeight() < getWidth())
+            smallerDimen = getHeight();
+        else
+            smallerDimen = getWidth();
+        // Calculates the radius of center circle.
+        // Formula disclaimer : 0.65 = 3.14 * 0.02
+        int radius = (int) (smallerDimen * 0.65 / 2) * 6 / 10;
+        // Width of each bar
+        double circumference = 1.5 * Math.PI * radius;
+        paint.setStrokeWidth((float) (circumference / _BarCount));
+        // Store initial configs
+        configs.put("needsInit", 1);// 0 = false, 1 = true
+        configs.put("radius", radius);
+        configs.put("stepCounter", 0);
+    }
+
+    /*
+     * Initializes the points
+     */
+    private void fillPoints() {
+        // Set points sizes if it is first time we got here or for any reasons arrays
+        // are broken.
+        if (getConfig("needsInit") == 1 || points == null || points.length < bytes.length * 2) {
+            // It needs to multiply by 4 because for every byte should be
+            // StartX,StartY,EndX,EndY
+            points = new float[bytes.length * 4];
+            // It needs to multiply by 2 because for every byte should be EndX,EndY
+            endPoints = new float[bytes.length * 2];
+            // It needs to multiply by 2 because for every byte should be OldEndX,OldEndY
+            oldEndPoints = new float[bytes.length * 2];
+            // It needs to multiply by 2 because there are X and Y differences
+            diffs = new float[bytes.length * 2];
+        }
+    }
+
+    /*
+     * Calculates the points of each round. Round represents amount of
+     * decrease/increase the length of bar
+     */
+    private void calcRound(int round, int i, double angle, int t) {
+        if (round == 0) {
+
+            // Set the old ends before assign new value the ends
+            oldEndPoints[i * 2] = endPoints[i * 2];
+            oldEndPoints[i * 2 + 1] = endPoints[i * 2 + 1];
+
+            // Find endX
+            endPoints[i * 2] = (float) (getWidth() / 2 + (getConfig("radius") + t) * Math.cos(Math.toRadians(angle)));
+            // Find endY
+            endPoints[i * 2
+                    + 1] = (float) (getHeight() / 2 + (getConfig("radius") + t) * Math.sin(Math.toRadians(angle)));
+
+            // If it is not first time, so we have oldEnds for calculation of differences
+            if (getConfig("needsInit") == 0) {
+                // Find differences of Xs
+                diffs[i * 2] = (endPoints[i * 2] - oldEndPoints[i * 2]) / _StepsCount;
+                // Find differences of Ys
+                diffs[i * 2 + 1] = (endPoints[i * 2 + 1] - oldEndPoints[i * 2 + 1]) / _StepsCount;
+            } else {
+                // Set the old ends
+                oldEndPoints[i * 2] = endPoints[i * 2];
+                oldEndPoints[i * 2 + 1] = endPoints[i * 2 + 1];
+            }
+        }
+        // Increase/Decrease the length of bar so oldEnd can match with ends
+        if (round <= _StepsCount) {
+            // Find endX to be drawn
+            points[i * 4 + 2] = oldEndPoints[i * 2] + diffs[i * 2] * round;
+            // Find endX to be drawn
+            points[i * 4 + 3] = oldEndPoints[i * 2 + 1] + diffs[i * 2 + 1] * round;
+        }
+    }
+
+    /*
+     * Calculates the legth of bar
+     */
+    private int getBarLength(int i, float ceiling) {
+        // Find the index of byte inside buffer
+        int x = (int) Math.ceil(i * ceiling);
+        // Change the sign of byte
+        byte a = (byte) (-Math.abs(bytes[x]) + 128);
+        // Gets the length of the line
+        return a * (getHeight() / 4) / 128;
+    }
+
+    /*
+     * Draw waveform It calculates the StartX,StartY just once because it never
+     * changes. Then calculates EndX, EndY, OldEndX and OldEndY every 3 frames. So
+     * OldEndX and OldEndY can increase/decrease toward EndX and EndY respectively.
+     * To perform such an action(Animation) you need differences of X and Y. It
+     * achieves using EndX - OldEndX and EndY - OldEndY Then find the steps using
+     * Differences / 3 Finally when OldEnd(s) matched to End(s) Need to set End with
+     * OldEnd value And the action will be repeated until visualizer is running.
      */
     @Override
     protected void onDraw(Canvas canvas) {
         // Check if bytes initiated before
         if (bytes == null || bytes.length == 0)
             return;
+        int round;
+        int t;
 
-        // Calculates ceiling regarded to bytes length. Ceiling is a coefficient for byte indexer.
-        // Because we have 120 bars, so the buffer should be filtered and only 120 bytes from buffer will have chosen to be shown.
-        float ceiling = (bytes.length - (bytes.length % 4)-4) / _BarCount;
+        // Calculates ceiling regarded to bytes length. The ceiling is a coefficient for
+        // byte indexer.
+        // Because we have 120 bars, so the buffer should be filtered and only 120 bytes
+        // from the buffer will have chosen to be shown.
+        float mod = bytes.length % 4;
+        float ceiling = (bytes.length - mod) / _BarCount;
 
         // The radius of center circle which bars start around it
-        if (needsInit) {
-            // Temporary value to get smaller dimension of visualizer
-            radius = getHeight() < getWidth() ? getHeight() : getWidth();
-            // Calculates the radius of center circle.
-            // Formula disclaimer : 0.65 = 3.14 * 0.02
-            radius = (int) (radius * 0.65 / 2) * 6 / 10;
-            // Width of each bar
-            double circumference = 1.5 * Math.PI * radius;
-            paint.setStrokeWidth((float) (circumference  / _BarCount));
-        }
+        if (configs == null)
+            fillConfigs();
 
-
-        // Set points sizes if it is first time we got here or for any reasons arrays are broken.
-        if (needsInit || points == null || points.length < bytes.length * 2) {
-            //It needs to multiply by 4 because for every byte should be StartX,StartY,EndX,EndY
-            points = new float[bytes.length * 4];
-            //It needs to multiply by 2 because for every byte should be EndX,EndY
-            endPoints = new float[bytes.length * 2];
-            //It needs to multiply by 2 because for every byte should be OldEndX,OldEndY
-            oldEndPoints = new float[bytes.length * 2];
-            //It needs to multiply by 2 because there are X and Y differences
-            diffs = new float[bytes.length * 2];
-        }
+        // Fill the points
+        fillPoints();
 
         // Find the round by
-        round = (int) (stepCounter % _StepsCount);
+        round = (int) (getConfig("stepCounter") % _StepsCount);
 
         // We start with angle 0 and go against clock's direction
-        angle = 0;
+        double angle = 0;
         // Calculates every points and iterate along increasing angle
         for (int i = 0; i < _BarCount; i++, angle += _AngleStep) {
-            // Find the index of byte inside buffer
-            x = (int) Math.ceil(i * ceiling);
-            // Change the sign of byte
-            byte a = (byte) (-Math.abs(bytes[x]) + 128);
-            // Gets the length of the line
-            t = a * (getHeight() / 4) / 128;
-
+            // Get length of bar
+            t = getBarLength(i, ceiling);
             // First time calculates the startX and startY for every byte
-            if (needsInit) {
+            if (getConfig("needsInit") == 1) {
                 // Find startX
-                points[i * 4] = (float) (getWidth() / 2
-                        + radius
-                        * Math.cos(Math.toRadians(angle)));
+                points[i * 4] = (float) (getWidth() / 2 + getConfig("radius") * Math.cos(Math.toRadians(angle)));
                 // Find startY
-                points[i * 4 + 1] = (float) (getHeight() / 2
-                        + radius
-                        * Math.sin(Math.toRadians(angle)));
+                points[i * 4 + 1] = (float) (getHeight() / 2 + getConfig("radius") * Math.sin(Math.toRadians(angle)));
             }
-
-            if (round == 0) {
-
-                // Set the old ends before assign new value the ends
-                oldEndPoints[i * 2] = endPoints[i * 2];
-                oldEndPoints[i * 2 + 1] = endPoints[i * 2 + 1];
-
-                // Find endX
-                endPoints[i * 2] = (float) (getWidth() / 2
-                        + (radius + t)
-                        * Math.cos(Math.toRadians(angle)));
-                // Find endY
-                endPoints[i * 2 + 1] = (float) (getHeight() / 2
-                        + (radius + t)
-                        * Math.sin(Math.toRadians(angle)));
-
-                // If it is not first time, so we have oldEnds for calculation of differences
-                if (!needsInit) {
-                    // Find differences of Xs
-                    diffs[i * 2] = (endPoints[i * 2] - oldEndPoints[i * 2]) / _StepsCount;
-                    // Find differences of Ys
-                    diffs[i * 2 + 1] = (endPoints[i * 2 + 1] - oldEndPoints[i * 2 + 1]) / _StepsCount;
-                } else {
-                    // Set the old ends
-                    oldEndPoints[i * 2] = endPoints[i * 2];
-                    oldEndPoints[i * 2 + 1] = endPoints[i * 2 + 1];
-                }
-            }
-            // Increase/Decrease the length of bar so oldEnd can match with ends
-            if (round <= _StepsCount) {
-                // Find endX to be drawn
-                points[i * 4 + 2] = oldEndPoints[i * 2] + diffs[i * 2] * round;
-                // Find endX to be drawn
-                points[i * 4 + 3] = oldEndPoints[i * 2 + 1] + diffs[i * 2 + 1] * round;
-            }
-
+            // Calculates points for current round
+            calcRound(round, i, angle, t);
 
         }
-        if (!needsInit)
+        if (getConfig("needsInit") == 0)
             canvas.drawLines(points, paint);
 
         super.onDraw(canvas);
         // The stepCounter increases
-        stepCounter++;
+        setConfig("stepCounter", getConfig("stepCounter") + 1);
         // Initialized, no longer need initializing
-        if (needsInit)
-            needsInit = false;
+        if (getConfig("needsInit") == 1)
+            setConfig("needsInit", 0);
     }
 }
