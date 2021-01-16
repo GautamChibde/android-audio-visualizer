@@ -72,7 +72,7 @@ public class LineBarVisualizer extends BaseVisualizer {
         }
         this.density = density;
         if (density > 256) {
-            this.density = 250;
+            this.density = 256;
             this.gap = 0;
         } else if (density <= 10) {
             this.density = 10;
