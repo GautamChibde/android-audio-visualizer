@@ -173,7 +173,7 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
         // Because we have 120 bars, so the buffer should be filtered and only 120 bytes
         // from the buffer will have chosen to be shown.
         // Get length of bar
-        int t = getBarLength(i, (bytes.length - bytes.length % 4) / _BarCount);
+        int t = getBarLength(i, (bytes.length - bytes.length % 4f) / _BarCount);
         // Find the round by
         int round = (int) (getConfig("stepCounter") % _StepsCount);
         if (round == 0) {

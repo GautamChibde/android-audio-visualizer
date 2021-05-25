@@ -1,14 +1,22 @@
+dist: trusty
+
 language: android
 
+jdk:
+  - oraclejdk8
+
 before_install:
+    - yes | sdkmanager "platforms;android-30"
     - echo yes | android update sdk --filter extra-android-support --no-ui --force > /dev/null
     - echo yes | android update sdk --filter extra-android-m2repository --no-ui --force > /dev/null
 
 android:
   components:
     - tools
-    - build-tools-28.0.3
-    - android-28
+    - platform-tools
+    - build-tools-30.0.3
+    - android-30
+    - extra
     - extra-android-m2repository
 
   licenses:
