@@ -21,9 +21,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import androidx.annotation.Nullable;
 
 import android.util.AttributeSet;
+
+import androidx.annotation.Nullable;
+
+import com.chibde.BaseVisualizer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -207,7 +210,7 @@ public class CircleBarVisualizerSmooth extends BaseVisualizer {
             points[indexM4 + 1] = (float) (this.getHeight() / 2 + getConfig("radius") * Math.sin(angle));
         }
         // Calculates points for current round
-        calcRound(i, radianAngle);
+        calcRound(i, angle);
     }
 
     /*
