@@ -6,6 +6,7 @@ local/
 /build
 com_crashlytics_export_strings.xml
 local.properties
+gradle/
 .gradle/
 .signing/
 .idea/libraries/
