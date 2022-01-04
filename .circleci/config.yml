@@ -22,19 +22,11 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
-      # Checkout the code as the first step.
       - checkout
 
-      # The next step will run the unit tests
       - android/run-tests:
           test-command: ./gradlew lint testDebug --continue
 
-      # Then start the emulator and run the Instrumentation tests!
-      - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedDebugAndroidTest
-          system-image: system-images;android-25;google_apis;x86
-
-      # And finally run the release build
       - run:
           name: Assemble release build
           command: |
