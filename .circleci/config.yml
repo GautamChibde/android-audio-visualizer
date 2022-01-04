@@ -18,7 +18,17 @@ jobs:
           name: Assemble release build
           command: |
             ./gradlew assembleRelease
-            
+
+  build-verify:
+    executor:
+      name: android/android-machine
+    steps:
+      - checkout
+      - run:
+          name: Assemble release build
+          command: |
+            ./gradlew clean assemble
+
   deploy-to-sonatype:
     executor:
       name: android/android-machine
@@ -49,9 +59,8 @@ workflows:
   build-test-deploy:
     jobs:
       - build-and-test
-      - android/run-test:
+      - build-verify:
           name: build-test
-          test-command: ./gradlew assembleRelease
           filters:
             tags:
               only: /^[0-9]+.*/ 
