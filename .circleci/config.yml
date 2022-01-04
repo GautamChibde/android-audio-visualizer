@@ -49,10 +49,16 @@ workflows:
   build-test-deploy:
     jobs:
       - build-and-test
+      - android/run-test:
+          name: build-test
+          test-command: ./gradlew assembleRelease
+          filters:
+            tags:
+              only: /^[0-9]+.*/ 
       - hold-for-approval:
           type: approval
           requires:
-            - build-and-test
+            - build-test
           filters:
             tags:
               only: /^[0-9]+.*/
