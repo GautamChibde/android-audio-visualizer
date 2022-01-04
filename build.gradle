@@ -1,19 +1,17 @@
 buildscript {
     repositories {
         mavenCentral()
-        mavenLocal()
-        maven {
-            url "https://maven.google.com"
-        }
         google()
-        jcenter()
-
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'com.android.tools.build:gradle:4.2.2'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
+}
+
+plugins {
+    id "io.github.gradle-nexus.publish-plugin" version "1.0.0"
 }
 
 allprojects {
@@ -23,14 +21,25 @@ allprojects {
 
     repositories {
         mavenCentral()
-        mavenLocal()
-        maven {
-            url "https://maven.google.com"
-        }
-        jcenter()
+        google()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+group = "io.github.gautamchibde"
+version = findProperty('LIBRARY_VERSION') ? findProperty('LIBRARY_VERSION')  : "2.2.1-snapshot" //Hardcoding snapshot version if none exist in environment variable
+
+
+nexusPublishing {
+    repositories {
+        sonatype {  //only for users registered in Sonatype after 24 Feb 2021
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username = findProperty('OSSRH_USERNAME')
+            password = findProperty('OSSRH_PASSWORD')
+        }
+    }
 }

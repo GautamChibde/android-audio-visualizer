@@ -1,6 +1,6 @@
 <h1 align="center"> <img src="http://res.cloudinary.com/dvkxfgprc/image/upload/v1511626276/logo_lfjxrd.png"></h1>
 
-[![Build Status](https://travis-ci.com/GautamChibde/android-audio-visualizer.svg?branch=master)](https://travis-ci.org/GautamChibde/android-audio-visualizer) [![codebeat badge](https://codebeat.co/badges/0f34e433-9e0b-44a4-90da-b53d644848b9)](https://codebeat.co/projects/github-com-gautamchibde-android-audio-visualizer-master) [ ![Download](https://api.bintray.com/packages/gautamchibde/Audio-Visualizer/audiovisualizer/images/download.svg) ](https://bintray.com/gautamchibde/Audio-Visualizer/audiovisualizer/_latestVersion) [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+[![CircleCI](https://circleci.com/gh/GautamChibde/android-audio-visualizer/tree/master.svg?style=svg)](https://circleci.com/gh/GautamChibde/android-audio-visualizer/tree/master) [![codebeat badge](https://codebeat.co/badges/0f34e433-9e0b-44a4-90da-b53d644848b9)](https://codebeat.co/projects/github-com-gautamchibde-android-audio-visualizer-master) [ ![Download](https://api.bintray.com/packages/gautamchibde/Audio-Visualizer/audiovisualizer/images/download.svg) ](https://bintray.com/gautamchibde/Audio-Visualizer/audiovisualizer/_latestVersion) [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
 # Demo
 
@@ -11,16 +11,16 @@
 Add to build.gradle:
 ```groovy
 dependencies {
-    compile 'com.chibde:audiovisualizer:2.2.0'
+ compile 'com.chibde:audiovisualizer:2.2.0'
 }
 ```
 Library is available in jcenter repository
 
 # How to use
- 
- Refer to the [sample](https://github.com/GautamChibde/android-audio-visualizer/tree/master/sample) project on how to use visualizer or refer to [WIKI](https://github.com/GautamChibde/android-audio-visualizer/wiki) docs.
- 
- ## Visualizers
+
+Refer to the [sample](https://github.com/GautamChibde/android-audio-visualizer/tree/master/sample) project on how to use visualizer or refer to [WIKI](https://github.com/GautamChibde/android-audio-visualizer/wiki) docs.
+
+## Visualizers
 * [LineVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Line-Visualizer)
 * [BarVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Bar-Visualizer)
 * [CircleVisualizer](https://github.com/GautamChibde/android-audio-visualizer/wiki/Circle-Visualizer)
