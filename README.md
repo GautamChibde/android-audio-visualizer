@@ -1,6 +1,6 @@
 <h1 align="center"> <img src="http://res.cloudinary.com/dvkxfgprc/image/upload/v1511626276/logo_lfjxrd.png"></h1>
 
-[![CircleCI](https://circleci.com/gh/GautamChibde/android-audio-visualizer/tree/master.svg?style=svg)](https://circleci.com/gh/GautamChibde/android-audio-visualizer/tree/master) [![codebeat badge](https://codebeat.co/badges/0f34e433-9e0b-44a4-90da-b53d644848b9)](https://codebeat.co/projects/github-com-gautamchibde-android-audio-visualizer-master) [ ![Download](https://api.bintray.com/packages/gautamchibde/Audio-Visualizer/audiovisualizer/images/download.svg) ](https://bintray.com/gautamchibde/Audio-Visualizer/audiovisualizer/_latestVersion) [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+[![CircleCI](https://circleci.com/gh/GautamChibde/android-audio-visualizer/tree/master.svg?style=svg)](https://circleci.com/gh/GautamChibde/android-audio-visualizer/tree/master) [![codebeat badge](https://codebeat.co/badges/0f34e433-9e0b-44a4-90da-b53d644848b9)](https://codebeat.co/projects/github-com-gautamchibde-android-audio-visualizer-master) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.gautamchibde/audiovisualizer/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.gautamchibde/audiovisualizer) [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
 # Demo
 
