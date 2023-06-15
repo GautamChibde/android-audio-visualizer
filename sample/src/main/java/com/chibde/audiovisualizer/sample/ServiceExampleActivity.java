@@ -62,6 +62,7 @@ public class ServiceExampleActivity extends AppCompatActivity {
             int requestCode,
             @NonNull String[] permissions,
             @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case BaseActivity.AUDIO_PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0
