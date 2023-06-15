@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -22,6 +24,7 @@
         </activity>
         <activity
             android:name=".visualizer.LineVisualizerActivity"
+            android:exported="true"
             android:label="@string/line_visualizer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -29,6 +32,7 @@
         </activity>
         <activity
             android:name=".visualizer.BarVisualizerActivity"
+            android:exported="true"
             android:label="@string/bar_visualizer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -36,17 +40,20 @@
         </activity>
         <activity
             android:name=".visualizer.CircleVisualizerActivity"
-            android:label="@string/circle_visualizer"/>
+            android:label="@string/circle_visualizer"
+            android:exported="true"/>
         <activity
             android:name=".visualizer.CircleBarVisualizerActivity"
-            android:label="@string/circle_bar_visualizer">
+            android:label="@string/circle_bar_visualizer"
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".visualizer.LineBarVisualizerActivity"
-            android:label="@string/line_bar_visualizer">
+            android:label="@string/line_bar_visualizer"
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -54,7 +61,8 @@
 
         <activity
             android:name=".visualizer.SquareBarVisualizerActivity"
-            android:label="@string/square_bar_visualizer">
+            android:label="@string/square_bar_visualizer"
+            android:exported="true">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -65,7 +73,7 @@
             android:name=".MediaPlayerService"
             android:exported="false" />
 
-        <activity android:name=".ServiceExampleActivity">
+        <activity android:name=".ServiceExampleActivity" android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
