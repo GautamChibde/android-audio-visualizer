@@ -32,7 +32,7 @@ jobs:
   deploy-to-sonatype:
     executor:
       name: android/android-machine
-      resource-class: xlarge
+      resource-class: large
     steps:
       - checkout
       - run:
